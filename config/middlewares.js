@@ -1,0 +1,1 @@
+// CORS autorisé pour ripolldarcia.netlify.app
