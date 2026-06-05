@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_stacks",
+  "info": {
+    "displayName": "Stack"
+  },
+  "options": {},
+  "attributes": {
+    "nom": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

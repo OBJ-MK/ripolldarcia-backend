@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "apropos",
+  "info": {
+    "singularName": "apropo",
+    "pluralName": "apropos",
+    "displayName": "apropo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titre": {
+      "type": "string",
+      "required": true
+    },
+    "Contenu": {
+      "type": "blocks",
+      "required": true
+    },
+    "Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "LinkedIn": {
+      "type": "string",
+      "required": false
+    },
+    "Facebook": {
+      "type": "string"
+    },
+    "Twitter": {
+      "type": "string"
+    },
+    "Instagram": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email",
+      "required": true,
+      "default": "ripollbis@gmail.com"
+    }
+  }
+}

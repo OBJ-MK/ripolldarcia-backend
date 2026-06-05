@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "postes",
+  "info": {
+    "singularName": "poste",
+    "pluralName": "postes",
+    "displayName": "poste "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titre": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "Localisation": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Remote",
+      "enum": [
+        "Remote",
+        "Hybride",
+        "Sur site"
+      ]
+    },
+    "Temps": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Part-time",
+      "enum": [
+        "Full-time",
+        "Part-time",
+        "Consulting"
+      ]
+    },
+    "Salaire": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Sur devis",
+      "enum": [
+        "Sur devis",
+        "Equility + Cash",
+        "Journée"
+      ]
+    },
+    "Statut": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Disponible",
+      "enum": [
+        "Bientôt",
+        "Disponible"
+      ]
+    },
+    "Entreprise": {
+      "type": "string",
+      "default": "Mission Freelance",
+      "required": true
+    }
+  }
+}
