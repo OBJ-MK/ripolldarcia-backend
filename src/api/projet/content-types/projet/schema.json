@@ -4,7 +4,7 @@
   "info": {
     "singularName": "projet",
     "pluralName": "projets",
-    "displayName": "projet "
+    "displayName": "projet"
   },
   "options": {
     "draftAndPublish": true
@@ -19,9 +19,20 @@
       "type": "string",
       "required": true
     },
-    "Description": {
+    "slug": {
+      "type": "uid",
+      "targetField": "Titre"
+    },
+    "Categorie": {
+      "type": "string",
+      "required": true
+    },
+    "descriptionCourte": {
       "type": "text",
       "required": true
+    },
+    "descriptionLongue": {
+      "type": "richtext"
     },
     "Lien": {
       "type": "string",
@@ -34,13 +45,31 @@
     },
     "Image": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
+    },
+    "galerie": {
+      "type": "component",
+      "component": "shared.media-image-legende",
+      "repeatable": true,
+      "required": true,
+      "min": 1
+    },
+    "badges": {
+      "type": "component",
+      "component": "shared.projet-badge",
+      "repeatable": true
+    },
+    "liens": {
+      "type": "component",
+      "component": "shared.projet-lien",
+      "repeatable": true
     }
   }
 }

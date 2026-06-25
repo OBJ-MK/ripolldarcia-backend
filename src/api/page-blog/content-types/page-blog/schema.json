@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_blogs",
+  "info": {
+    "singularName": "page-blog",
+    "pluralName": "page-blogs",
+    "displayName": "PageBlog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre_principal": {
+      "type": "string",
+      "required": true
+    },
+    "sous_titre": {
+      "type": "text"
+    }
+  }
+}

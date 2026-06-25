@@ -15,7 +15,14 @@
       "type": "string",
       "required": true
     },
-    "Contenu": {
+    "Description": {
+      "type": "richtext",
+      "required": true
+    },
+    "Desscription2": {
+      "type": "richtext"
+    },
+    "points_forts": {
       "type": "blocks",
       "required": true
     },

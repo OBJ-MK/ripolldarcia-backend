@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_posts",
+  "info": {
+    "singularName": "social-post",
+    "pluralName": "social-posts",
+    "displayName": "SocialPost"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plateforme": {
+      "type": "enumeration",
+      "enum": [
+        "Instagram",
+        "Twitter",
+        "LinkedIn"
+      ]
+    },
+    "date_texte": {
+      "type": "string"
+    },
+    "contenu": {
+      "type": "text"
+    },
+    "hashtags": {
+      "type": "string"
+    },
+    "likes": {
+      "type": "biginteger"
+    },
+    "Commantaire": {
+      "type": "biginteger"
+    },
+    "Repost": {
+      "type": "biginteger"
+    },
+    "lien_externe": {
+      "type": "string"
+    }
+  }
+}

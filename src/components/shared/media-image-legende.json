@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_media_image_legendes",
+  "info": {
+    "displayName": "media.image-legende"
+  },
+  "options": {},
+  "attributes": {
+    "Legende": {
+      "type": "text"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  },
+  "config": {}
+}

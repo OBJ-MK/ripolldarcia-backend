@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_projet_liens",
+  "info": {
+    "displayName": "projet.lien"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
