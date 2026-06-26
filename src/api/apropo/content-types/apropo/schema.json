@@ -11,15 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titre": {
-      "type": "string",
-      "required": true
-    },
-    "Description": {
+    "Paragraphe1": {
       "type": "richtext",
       "required": true
     },
-    "Desscription2": {
+    "Paragraphe2": {
       "type": "richtext"
     },
     "points_forts": {

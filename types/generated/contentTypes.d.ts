@@ -454,8 +454,6 @@ export interface ApiApropoApropo extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    Desscription2: Schema.Attribute.RichText;
     Email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'ripollbis@gmail.com'>;
@@ -468,11 +466,12 @@ export interface ApiApropoApropo extends Struct.SingleTypeSchema {
       'api::apropo.apropo'
     > &
       Schema.Attribute.Private;
+    Paragraphe1: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Paragraphe2: Schema.Attribute.RichText;
     Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
     points_forts: Schema.Attribute.Blocks & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Titre: Schema.Attribute.String & Schema.Attribute.Required;
     Twitter: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -604,15 +603,19 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Entete: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Le Partenaire Strat\u00E9gique pour votre visibilit\u00E9 digitale & m\u00E9diatique'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    sousTitre: Schema.Attribute.String & Schema.Attribute.Required;
+    sousTitre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Professionnel de la communication'>;
     statExperience: Schema.Attribute.Integer;
     statProjets: Schema.Attribute.Integer;
     statSatisfaction: Schema.Attribute.BigInteger;
-    Titre: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

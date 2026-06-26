@@ -11,12 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titre": {
-      "type": "string",
-      "required": true
+    "Entete": {
+      "type": "richtext",
+      "required": true,
+      "default": "Le Partenaire Stratégique pour votre visibilité digitale & médiatique"
     },
     "sousTitre": {
       "type": "string",
+      "default": "Professionnel de la communication",
       "required": true
     },
     "badgeTexte": {
