@@ -678,6 +678,40 @@ export interface ApiPageBlogPageBlog extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPartenairePartenaire extends Struct.CollectionTypeSchema {
+  collectionName: 'partenaires';
+  info: {
+    displayName: 'partenaire';
+    pluralName: 'partenaires';
+    singularName: 'partenaire';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Conception et d\u00E9veloppement de sites web, applications mobiles et solutions num\u00E9riques sur mesure.'>;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::partenaire.partenaire'
+    > &
+      Schema.Attribute.Private;
+    NomDuDomaine: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'D\u00E9veloppement web & mobile'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPostePoste extends Struct.CollectionTypeSchema {
   collectionName: 'postes';
   info: {
@@ -1417,6 +1451,7 @@ declare module '@strapi/strapi' {
       'api::hero.hero': ApiHeroHero;
       'api::outil.outil': ApiOutilOutil;
       'api::page-blog.page-blog': ApiPageBlogPageBlog;
+      'api::partenaire.partenaire': ApiPartenairePartenaire;
       'api::poste.poste': ApiPostePoste;
       'api::projet.projet': ApiProjetProjet;
       'api::service.service': ApiServiceService;

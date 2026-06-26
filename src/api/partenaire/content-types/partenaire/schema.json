@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partenaires",
+  "info": {
+    "singularName": "partenaire",
+    "pluralName": "partenaires",
+    "displayName": "partenaire"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NomDuDomaine": {
+      "type": "string",
+      "default": "Développement web & mobile",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "default": "Conception et développement de sites web, applications mobiles et solutions numériques sur mesure.",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  }
+}
