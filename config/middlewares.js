@@ -28,6 +28,8 @@ module.exports = ({ env }) => [
         env('FRONTEND_URL', 'https://ripolldarcia.netlify.app'),
         'http://localhost:3000',
         'http://localhost:5173',
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
         'http://localhost:1337',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
