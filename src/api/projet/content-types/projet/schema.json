@@ -54,13 +54,6 @@
         "audios"
       ]
     },
-    "galerie": {
-      "type": "component",
-      "component": "shared.media-image-legende",
-      "repeatable": true,
-      "required": true,
-      "min": 1
-    },
     "badges": {
       "type": "component",
       "component": "shared.projet-badge",

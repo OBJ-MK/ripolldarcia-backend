@@ -777,14 +777,6 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     descriptionCourte: Schema.Attribute.Text & Schema.Attribute.Required;
     descriptionLongue: Schema.Attribute.RichText;
-    galerie: Schema.Attribute.Component<'shared.media-image-legende', true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     Image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
