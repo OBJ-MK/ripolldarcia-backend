@@ -13,8 +13,7 @@
   "attributes": {
     "Citation": {
       "type": "text",
-      "required": true,
-      "regex": "La phrase du témoignage"
+      "required": true
     },
     "Auteur": {
       "type": "string",
@@ -22,8 +21,7 @@
     },
     "Fonction": {
       "type": "string",
-      "required": false,
-      "regex": "Poste, ex. « Directrice Marketing »"
+      "required": false
     },
     "Entreprise": {
       "type": "string"
