@@ -790,6 +790,8 @@ export interface ApiProjetProjet extends Struct.CollectionTypeSchema {
       'api::projet.projet'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Titre'>;
     stack: Schema.Attribute.Component<'shared.stack', true>;
@@ -919,6 +921,47 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     nom: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     services: Schema.Attribute.Relation<'manyToMany', 'api::service.service'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTemoignageTemoignage extends Struct.CollectionTypeSchema {
+  collectionName: 'temoignages';
+  info: {
+    displayName: 'Temoignage';
+    pluralName: 'temoignages';
+    singularName: 'temoignage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Auteur: Schema.Attribute.String & Schema.Attribute.Required;
+    Citation: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Entreprise: Schema.Attribute.String;
+    Fonction: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::temoignage.temoignage'
+    > &
+      Schema.Attribute.Private;
+    Note: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>;
+    Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1450,6 +1493,7 @@ declare module '@strapi/strapi' {
       'api::single-type.single-type': ApiSingleTypeSingleType;
       'api::social-post.social-post': ApiSocialPostSocialPost;
       'api::tag.tag': ApiTagTag;
+      'api::temoignage.temoignage': ApiTemoignageTemoignage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -63,6 +63,17 @@
       "type": "component",
       "component": "shared.projet-lien",
       "repeatable": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
