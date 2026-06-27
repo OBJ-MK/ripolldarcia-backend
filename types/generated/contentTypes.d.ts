@@ -642,10 +642,21 @@ export interface ApiOutilOutil extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::outil.outil'> &
       Schema.Attribute.Private;
     Nom: Schema.Attribute.String & Schema.Attribute.Required;
+    Ordre: Schema.Attribute.Integer;
+    Pourcentage: Schema.Attribute.BigInteger &
+      Schema.Attribute.SetMinMax<
+        {
+          max: '100';
+          min: '50';
+        },
+        string
+      > &
+      Schema.Attribute.DefaultTo<'100'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Vedette: Schema.Attribute.Boolean;
   };
 }
 
@@ -818,13 +829,14 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    Icon: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::service.service'
     > &
       Schema.Attribute.Private;
+    Ordre: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     Titre: Schema.Attribute.String &

@@ -26,8 +26,18 @@
       "target": "api::tag.tag",
       "mappedBy": "services"
     },
-    "Icon": {
-      "type": "string"
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Ordre": {
+      "type": "integer"
     }
   }
 }

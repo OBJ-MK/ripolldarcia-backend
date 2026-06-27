@@ -23,6 +23,18 @@
         "images",
         "files"
       ]
+    },
+    "Pourcentage": {
+      "type": "biginteger",
+      "default": "100",
+      "min": "50",
+      "max": "100"
+    },
+    "Vedette": {
+      "type": "boolean"
+    },
+    "Ordre": {
+      "type": "integer"
     }
   }
 }
