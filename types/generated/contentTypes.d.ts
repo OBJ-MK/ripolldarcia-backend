@@ -644,13 +644,6 @@ export interface ApiOutilOutil extends Struct.CollectionTypeSchema {
     Nom: Schema.Attribute.String & Schema.Attribute.Required;
     Ordre: Schema.Attribute.Integer;
     Pourcentage: Schema.Attribute.BigInteger &
-      Schema.Attribute.SetMinMax<
-        {
-          max: '100';
-          min: '50';
-        },
-        string
-      > &
       Schema.Attribute.DefaultTo<'100'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
