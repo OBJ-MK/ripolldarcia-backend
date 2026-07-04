@@ -45,7 +45,7 @@
       "default": "Sur devis",
       "enum": [
         "Sur devis",
-        "Equility + Cash",
+        "Equity + Cash",
         "Journée"
       ]
     },
