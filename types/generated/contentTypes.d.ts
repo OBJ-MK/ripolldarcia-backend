@@ -479,43 +479,6 @@ export interface ApiApropoApropo extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
-  collectionName: 'articles';
-  info: {
-    displayName: 'article ';
-    pluralName: 'articles';
-    singularName: 'article';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Categorie: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Design'>;
-    Contenu: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::article.article'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Resume: Schema.Attribute.Text & Schema.Attribute.Required;
-    slug: Schema.Attribute.UID<'Titre'>;
-    Titre: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Community management en 2026 : les r\u00E8gles ont chang\u00E9'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
   collectionName: 'blog_articles';
   info: {
@@ -615,7 +578,7 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
       Schema.Attribute.DefaultTo<'Professionnel de la communication'>;
     statExperience: Schema.Attribute.Integer;
     statProjets: Schema.Attribute.Integer;
-    statSatisfaction: Schema.Attribute.BigInteger;
+    statSatisfaction: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -744,7 +707,7 @@ export interface ApiPostePoste extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Salaire: Schema.Attribute.Enumeration<
-      ['Sur devis', 'Equility + Cash', 'Journ\u00E9e']
+      ['Sur devis', 'Equity + Cash', 'Journ\u00E9e']
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Sur devis'>;
@@ -1485,7 +1448,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::apropo.apropo': ApiApropoApropo;
-      'api::article.article': ApiArticleArticle;
       'api::blog-article.blog-article': ApiBlogArticleBlogArticle;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::hero.hero': ApiHeroHero;

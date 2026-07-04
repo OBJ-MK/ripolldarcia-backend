@@ -24,7 +24,7 @@
       "required": true
     },
     "contenu": {
-      "type": "richtext",
+      "type": "blocks",
       "required": true
     },
     "image_couverture": {
