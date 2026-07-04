@@ -494,7 +494,7 @@ export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::blog-tag.blog-tag'
     >;
-    contenu: Schema.Attribute.RichText & Schema.Attribute.Required;
+    contenu: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
