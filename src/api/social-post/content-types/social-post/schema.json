@@ -26,18 +26,6 @@
     "contenu": {
       "type": "text"
     },
-    "hashtags": {
-      "type": "string"
-    },
-    "likes": {
-      "type": "biginteger"
-    },
-    "Commantaire": {
-      "type": "biginteger"
-    },
-    "Repost": {
-      "type": "biginteger"
-    },
     "lien_externe": {
       "type": "string"
     },
