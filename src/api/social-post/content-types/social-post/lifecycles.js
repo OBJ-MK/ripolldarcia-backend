@@ -28,6 +28,35 @@ async function fetchEmbedHtml(oembedUrl) {
   }
 }
 
+// Décode les entités HTML les plus courantes renvoyées par l'oEmbed Twitter
+function decodeHtmlEntities(str) {
+  const entities = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+    '&mdash;': '—',
+    '&nbsp;': ' ',
+  };
+  return str.replace(/&[a-zA-Z#0-9]+;/g, (match) => entities[match] || match);
+}
+
+// Extrait le texte brut du tweet depuis le HTML oEmbed de Twitter/X
+function extractTwitterText(html) {
+  if (!html) return null;
+
+  const match = html.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+  if (!match) return null;
+
+  const rawInner = match[1];
+  // Supprime les balises internes (liens vers hashtags, mentions, etc.)
+  const withoutTags = rawInner.replace(/<[^>]+>/g, '');
+  const decoded = decodeHtmlEntities(withoutTags);
+
+  return decoded.trim() || null;
+}
+
 async function enrichFromLink(data) {
   if (!data.lien_externe) return;
 
@@ -43,7 +72,16 @@ async function enrichFromLink(data) {
   if (platform === 'LinkedIn') return;
 
   const oembedUrl = getOembedUrl(platform, data.lien_externe);
-  data.html_embed = await fetchEmbedHtml(oembedUrl);
+  const html = await fetchEmbedHtml(oembedUrl);
+  data.html_embed = html;
+
+  // Auto-remplissage du contenu uniquement pour Twitter (seule plateforme
+  // dont l'oEmbed public expose le texte en clair), et seulement si le
+  // champ n'a pas déjà été rempli manuellement par l'admin.
+  if (platform === 'Twitter' && !data.contenu) {
+    const extracted = extractTwitterText(html);
+    if (extracted) data.contenu = extracted;
+  }
 }
 
 module.exports = {
