@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * social-post controller
+ */
+
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::social-post.social-post', ({ strapi }) => ({
@@ -37,7 +41,7 @@ module.exports = createCoreController('api::social-post.social-post', ({ strapi 
         html: data.html || null,
       };
     } catch (err) {
-      ctx.badRequest(`Erreur lors de la récupération de l'aperçu : ${err.message}`);
+      return ctx.badRequest(`Erreur lors de la récupération de l'aperçu : ${err.message}`);
     }
   },
 }));
