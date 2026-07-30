@@ -15,6 +15,7 @@
       "type": "enumeration",
       "enum": [
         "Instagram",
+        "Facebook",
         "Twitter",
         "LinkedIn"
       ]
@@ -39,6 +40,9 @@
     },
     "lien_externe": {
       "type": "string"
+    },
+    "html_embed": {
+      "type": "text"
     }
   }
 }
