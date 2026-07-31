@@ -25,6 +25,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "abonner_reseaux": {
+      "type": "integer",
+      "required": false
+    },
+    "annne_exp": {
+      "type": "integer",
+      "required": false
     }
   }
 }
