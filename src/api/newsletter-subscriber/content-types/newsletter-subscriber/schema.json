@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newsletter_subscribers",
+  "info": {
+    "singularName": "newsletter-subscriber",
+    "pluralName": "newsletter-subscribers",
+    "displayName": "NewsletterSubscriber"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "token_desabonnement": {
+      "type": "string"
+    },
+    "date_inscription": {
+      "type": "datetime"
+    }
+  }
+}
