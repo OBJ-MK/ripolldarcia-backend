@@ -19,18 +19,39 @@ async function notifierAbonnes(article) {
 
     if (!subscribers.length) return;
 
-    const titre = article.Titre || 'Nouvel article';
-    const description = article.description_courte || '';
-    const slug = article.slug || '';
+    // event.result ne contient pas les relations média — on refetch avec populate
+    const fullArticle = await strapi.db
+      .query('api::blog-article.blog-article')
+      .findOne({
+        where: { id: article.id },
+        populate: ['image_couverture'],
+      });
+
+    const titre = fullArticle.Titre || 'Nouvel article';
+    const description = fullArticle.description_courte || '';
+    const slug = fullArticle.slug || '';
     const frontendUrl = process.env.FRONTEND_URL || '';
     const strapiUrl = process.env.STRAPI_URL || '';
     const lienArticle = `${frontendUrl}/#article?slug=${encodeURIComponent(slug)}`;
+
+    // Cloudinary renvoie déjà une URL absolue — pas besoin de préfixer avec strapiUrl
+    const cover = fullArticle.image_couverture;
+    const coverUrlRaw = cover?.formats?.medium?.url || cover?.url || '';
+    const coverUrl = coverUrlRaw
+      ? (coverUrlRaw.startsWith('http') ? coverUrlRaw : `${strapiUrl}${coverUrlRaw}`)
+      : '';
+
+    const imageBlock = coverUrl
+      ? `<img src="${coverUrl}" alt="${titre}" style="width:100%;max-width:560px;border-radius:12px;display:block;margin-bottom:20px;">`
+      : '';
 
     for (const sub of subscribers) {
       const lienDesabonnement = `${strapiUrl}/api/newsletter-subscribers/desabonner/${sub.token_desabonnement}`;
       const html = `
         <div style="font-family: sans-serif; max-width: 560px; margin: 0 auto; color:#111;">
-          <h2 style="margin-bottom:8px;">${titre}</h2>
+          <p style="text-transform:uppercase;letter-spacing:1px;font-size:11px;color:#f5c518;font-weight:700;margin-bottom:8px;">Nouvel article</p>
+          ${imageBlock}
+          <h2 style="margin:0 0 12px 0;font-size:22px;">${titre}</h2>
           <p style="color:#444; line-height:1.6;">${description}</p>
           <p style="margin-top:24px;">
             <a href="${lienArticle}" style="background:#f5c518;color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;">Lire l'article →</a>
@@ -50,7 +71,6 @@ async function notifierAbonnes(article) {
           htmlContent: html,
         });
       } catch (err) {
-        // Un échec d'envoi à un abonné ne doit jamais bloquer les autres.
         strapi.log.error(`[newsletter] Échec envoi à ${sub.email}: ${err.message}`);
       }
     }
