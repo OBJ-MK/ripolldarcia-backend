@@ -10,7 +10,7 @@
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
-async function sendBrevoEmail({ to, subject, htmlContent, replyTo }) {
+async function sendBrevoEmail({ to, subject, htmlContent, replyTo = null}) {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) {
     throw new Error('BREVO_API_KEY manquant dans les variables d\'environnement.');
