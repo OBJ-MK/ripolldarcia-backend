@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logo_partenaires",
+  "info": {
+    "singularName": "logo-partenaire",
+    "pluralName": "logo-partenaires",
+    "displayName": "Logo Partenaire",
+    "description": "Logos de marques à afficher dans la bande de confiance, indépendamment des projets détaillés"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "ordre": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
