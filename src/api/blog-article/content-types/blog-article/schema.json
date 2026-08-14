@@ -49,6 +49,17 @@
     "mis_en_avant": {
       "type": "boolean",
       "default": true
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "blog_article"
     }
   }
 }
