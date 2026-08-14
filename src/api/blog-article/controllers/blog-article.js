@@ -7,6 +7,7 @@ module.exports = createCoreController('api::blog-article.blog-article', ({ strap
 
     const article = await strapi.documents('api::blog-article.blog-article').findOne({
       documentId: id,
+      status: 'published',
       fields: ['likes']
     });
 
@@ -16,6 +17,7 @@ module.exports = createCoreController('api::blog-article.blog-article', ({ strap
 
     const updated = await strapi.documents('api::blog-article.blog-article').update({
       documentId: id,
+      status: 'published',
       data: { likes: (article.likes || 0) + 1 }
     });
 
