@@ -6,6 +6,7 @@
 module.exports = ({ env }) => [
   'strapi::logger',
   'strapi::errors',
+  'global::permissions-policy',
   {
     name: 'strapi::security',
     config: {
@@ -22,13 +23,15 @@ module.exports = ({ env }) => [
           upgradeInsecureRequests: null,
         },
       },
+      crossOriginOpenerPolicy: { policy: 'same-origin' },
+      crossOriginResourcePolicy: { policy: 'same-origin' },
     },
   },
   {
     name: 'strapi::cors',
     config: {
       origin: [
-        env('FRONTEND_URL', 'https://ripolldarcia.netlify.app'),
+        env('FRONTEND_URL', 'https://ripolldarcia.com'),
         'http://localhost:3000',
         'http://localhost:5173',
         'http://localhost:8000',
